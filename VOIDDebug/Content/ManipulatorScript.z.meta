@@ -1,0 +1,16 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "ManipulatorScript",
+		uint64 ResourceId = 532e2ab87b29a3f5,
+	},
+	ContentTags = 
+	{
+		Array Tags = 
+		[
+			"DebugScripts",
+			"DebugHelpers",
+		],
+	},
+},
