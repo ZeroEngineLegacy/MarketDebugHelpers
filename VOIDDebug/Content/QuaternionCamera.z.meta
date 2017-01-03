@@ -2,14 +2,14 @@ TextContent =
 {
 	ZilchScriptBuilder = 
 	{
-		string Name = "Utility",
-		uint64 ResourceId = 5319eca6aaa78864,
+		string Name = "QuaternionCamera",
+		uint64 ResourceId = 532e2ab87b2a4333,
 	},
 	ContentTags = 
 	{
 		Array Tags = 
 		[
-			"Utilities",
+			"3dCameras",
 		],
 	},
 },

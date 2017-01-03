@@ -1,12 +1,14 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
-
-// Component: HierarchyDisplay
-// Brief: This is a simple recusive debug component that prints the hierarchy 
-// of its object in cascading view followed by the total number of children. 
-// Often when working with hierarchies (especially at runtime) it can be 
-// difficult to tell what is attached to what. Using this component you can 
-// print the hierarchy structure in the console window.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: HierarchyDisplay                                                                                  */
+/* Brief: This is a simple recusive debug component that prints the hierarchy of its object in cascading    */
+/* view followed by the total number of children. Often when working with hierarchies                       */
+/* (especially at runtime) it can be difficult to tell what is attached to what. Using this component       */
+/* you can print the hierarchy structure in the console window.                                             */
+/************************************************************************************************************/
 
 class HierarchyDisplay : ZilchComponent
 {
@@ -24,10 +26,8 @@ class HierarchyDisplay : ZilchComponent
     // Starts the recursive printing of the hierarchy
     function DisplayHierarchy()
     {
-        // Print the hierarchy tree then the number oif children
+        // Print the hierarchy tree then the number of children
         var count = this.PrintChildren(this.Owner);
-        //Console.WriteLine(count);
-        Console.WriteLine("Total Children Count: `count`");
     }
     
     function PrintChildren(obj : Cog) : Integer

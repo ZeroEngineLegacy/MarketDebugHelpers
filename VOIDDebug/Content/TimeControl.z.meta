@@ -2,7 +2,7 @@ TextContent =
 {
 	ZilchScriptBuilder = 
 	{
-		string Name = "TimeControlScript",
+		string Name = "TimeControl",
 		uint64 ResourceId = 532e2ab87b2a9e42,
 	},
 	ContentTags = 

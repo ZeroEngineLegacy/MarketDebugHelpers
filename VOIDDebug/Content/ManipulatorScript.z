@@ -1,8 +1,22 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Zero Engine Team
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: HierarchyDisplay                                                                                  */
+/* Brief: Projects the mouse position into 3D space then uses joints to pull the object in the direction    */
+/* of the projected mouse.                                                                                  */
+/************************************************************************************************************/
 
 class ManipulatorScript : ZilchComponent
 {
+    // Depends on a camera to raycast through.
+    [Dependency]
+    var Camera : Camera;
+    
+    [Dependency]
+    var CameraViewport : CameraViewport;
+    
     // If this is set then the manipulation joint created
     // will lock the rotation of the grabbed object.
     [Property]
@@ -17,10 +31,6 @@ class ManipulatorScript : ZilchComponent
     [Property]
     var MaxDistance : Real = 100.0;
     
-    // Depends on a camera to raycast through.
-    [Dependency]
-    var Camera : Camera = null;
-    
     // The object that we are currently grabbing
     var SelectedObj : Cog = null;
     // The current distance away from the camera that
@@ -34,7 +44,7 @@ class ManipulatorScript : ZilchComponent
     {
         // We only operator on a component with a camera viewport,
         // grab the viewport from that component
-        var viewport = this.Camera.Viewport;
+        var viewport = this.CameraViewport;
         
         Zero.Connect(viewport, Events.MouseMove, this.OnMouseMove);
         Zero.Connect(viewport, Events.LeftMouseDown, this.OnLeftMouseDown);

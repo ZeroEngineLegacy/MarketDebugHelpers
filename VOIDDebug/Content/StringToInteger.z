@@ -1,7 +1,11 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Trevor Sundberg
+/********************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved          */
+/* Last Update: 12/13/2016                              */
+/* Author: Trevor Sundberg                              */
+/* Last updated by: Arend Danielek                      */
+/********************************************************/
 
-class Utility
+class StringToInteger
 {
     // This is a basic String->Integer converter. 
     // Do not pass the in negative signs, commas, spaces or decimals, etc. 
@@ -37,7 +41,7 @@ class Utility
             
             // Get the character as a single numeric digit (by subtracting off ascii of 0)
             var character = value.Get(i);
-            var digit = character - asciiZero;
+            var digit = character.Value - asciiZero;
             
             // If the digit is out of range [0-9], then it's not a valid number
             if (digit < 0 || digit > 9)
