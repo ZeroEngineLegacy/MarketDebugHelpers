@@ -320,6 +320,10 @@ Level =
 			bool RotationLocked = false,
 			Enum Mode2D = InheritFromSpace,
 		},
+		HierarchyDisplay = 
+		{
+			bool DisplayOnInit = true,
+		},
 		Hierarchy = 
 		{
 			Cog = 
