@@ -168,7 +168,7 @@ class ManipulatorScript : ZilchComponent
     function CreateManipulator(obj : Cog, point : Real3)
     {
         // Build a new manipulator joint attached by the picked point and save it
-        var jointCreator = Zero.JointBuilder.CreateInstance();
+        var jointCreator = JointCreator();
         jointCreator.ConnectToWorld = true;
         var cog = jointCreator.AttachWorld(obj,obj,point,"ManipulatorJoint");
         this.ManipulatorJoint = cog.ManipulatorJoint;
@@ -177,7 +177,7 @@ class ManipulatorScript : ZilchComponent
     function CreatePhyGun(obj : Cog, point : Real3)
     {
         // Build a new manipulator joint attached by the picked point and save it
-        var jointCreator = Zero.JointBuilder.CreateInstance();
+        var jointCreator = JointCreator();
         jointCreator.ConnectToWorld = true;
         var cog = jointCreator.AttachWorld(obj,obj,point,"PhyGunJoint");
         this.PhyGunJoint = cog.PhyGunJoint;

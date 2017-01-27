@@ -52,9 +52,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{0.0394216217, -0.89802742, -5.05359983}
+			var Translation = Vec3{2.73397422, 18.7344284, 71.7786331}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.00916402973, 0.984506309, 0.166516736, 0.0541810803}
+			var Rotation = Quat{-0.0888747275, 0.0208576843, 0.0018615037, 0.995822728}
 		}
 		Camera 
 		{
@@ -111,10 +111,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 0.00999999978
-			var VerticalAngle = 0.335103154
-			var HorizontalAngle = 9.53473473
-			var LookTarget = Vec3{0.0383853056, -0.901316106, -5.04421329}
+			var LookDistance = 66.3423843
+			var VerticalAngle = 0.178023413
+			var HorizontalAngle = 12.5244865
+			var LookTarget = Vec3{0, 6.98621702, 6.54200745}
 			var MoveSensitivity = 1
 		}
 	}
@@ -124,9 +124,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0, 6.98621702, 6.54200745}
+			var Translation = Vec3{0.881357193, 0.34059, 2.66517639}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.164327309, 0, 0, 0.986405969}
+			var Rotation = Quat{-0.0737642199, 0, 0, 0.99727571}
 		}
 		Camera 
 		{
@@ -184,15 +184,14 @@ Level
 		{
 			var Active = true
 		}
-		OrbitCamera 
+		QuaternionCamera 
 		{
-			var RotationSensitivity = 0.00999999978
-			var TranslationSensitivity = 0.100000001
-			var PanSensitivity = 3
-			var MinDistance = 1
-			var MaxDistance = 100
-			var Target = Vec3{0, 0, 0}
-			var Radius = 5
+			var Speed = 8
+			var LookSpeed = 0.00499999989
+			var RunWhilePaused = true
+			var AllowRotation = true
+			var AllowTranslation = true
+			var MouseTrapped = false
 		}
 		ManipulatorScript 
 		{
