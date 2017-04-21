@@ -181,8 +181,8 @@ class QuaternionCamera : ZilchComponent
     // Make sure to multiply in the correct order, we have to look up then look to the side.
     // If we look to the side first, we will invalidate the up rotation we generated
     // (use local rotation incase we have a parent)
-    var endResult = Math.Transform(transform.LocalRotation, upRotation);
-    endResult = Math.Transform(endResult, sideRotation);
+    var endResult = Math.Multiply(upRotation, transform.LocalRotation);
+    endResult = Math.Multiply(sideRotation, endResult);
     // Also make sure to normalize
     endResult = Math.Normalize(endResult);
     transform.LocalRotation = endResult;

@@ -4,7 +4,7 @@ class UISpaceCreator : ZilchComponent
   var UILevel : Level = null;
   
   [Property]
-  var UISpace : Archetype = Archetype.Find("Space");
+  var UISpace : Archetype = Archetype.Space;
   
   var CreatedSpace : Space = null;
   

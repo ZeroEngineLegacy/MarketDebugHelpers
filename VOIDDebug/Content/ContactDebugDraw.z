@@ -64,9 +64,7 @@ class ContactDebugDraw : ZilchComponent
         }
         
         // Create the debug line
-        var line = new DebugLine();
-        line.Start = point;
-        line.End = point + normal;
+        var line = DebugLine(point, point + normal);
         line.OnTop = this.OnTop;
         line.Color = this.Color;
         DebugDraw.Add(line);
