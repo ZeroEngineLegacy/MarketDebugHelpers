@@ -87,7 +87,7 @@ class ManipulatorScript : ZilchComponent
         var selectedPoint = Real3(0.0, 0.0, 0.0);
         
         // Find the object we clicked, if there wasn't one don't do anything
-        var castResults = this.Space.PhysicsSpace.CastRayResults(ray, 1);
+        var castResults = this.Space.PhysicsSpace.CastRay(ray, 1);
         foreach(var castResult in castResults)
         {
             // Save the object we hit
@@ -169,8 +169,8 @@ class ManipulatorScript : ZilchComponent
     {
         // Build a new manipulator joint attached by the picked point and save it
         var jointCreator = JointCreator();
-        jointCreator.ConnectToWorld = true;
-        var cog = jointCreator.AttachWorld(obj,obj,point,"ManipulatorJoint");
+        jointCreator.AttachToWorld = true;
+        var cog = jointCreator.CreateWorldPoints(obj,obj,"ManipulatorJoint",point,point);
         this.ManipulatorJoint = cog.ManipulatorJoint;
     }
         
@@ -178,8 +178,8 @@ class ManipulatorScript : ZilchComponent
     {
         // Build a new manipulator joint attached by the picked point and save it
         var jointCreator = JointCreator();
-        jointCreator.ConnectToWorld = true;
-        var cog = jointCreator.AttachWorld(obj,obj,point,"PhyGunJoint");
+        jointCreator.AttachToWorld = true;
+        var cog = jointCreator.CreateWorldPoints(obj,obj,"PhyGunJoint",point,point);
         this.PhyGunJoint = cog.PhyGunJoint;
     }
         

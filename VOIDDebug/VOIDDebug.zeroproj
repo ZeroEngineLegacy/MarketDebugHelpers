@@ -2,13 +2,13 @@
 Cog 
 {
 	var Name = ""
-	Project 
+	ProjectSettings 
 	{
 		var ProjectName = "VOIDDebug"
 		var ProjectOwner = ""
 		var DefaultLevel = "Level"
 		var ProjectSpace = "Space"
-		var ProjectEngineRevision = 15312
+		var ProjectEngineRevision = 16582
 		var AutoTakeProjectScreenshot = true
 		var Guid = 0x58069217d9ceb7c7
 	}
@@ -29,7 +29,7 @@ Cog
 		var PatchVersion = 0
 		var RevisionId = 15136
 	}
-	ProjectSettings 
+	ProjectConfig 
 	{
 		var EditorMode = EditorMode.Mode3D
 	}
