@@ -71,7 +71,6 @@ class ContactDebugDraw : ZilchComponent
                 
                 if(this.ArrowHead)
                     line.HeadSize = this.ArrowHeadSize;
-                
             }
         }
     }

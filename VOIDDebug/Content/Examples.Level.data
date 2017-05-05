@@ -112,10 +112,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 66.3423843
-			var VerticalAngle = 0.178023413
-			var HorizontalAngle = 12.5244865
-			var LookTarget = Real3{0, 6.98621702, 6.54200745}
+			var LookDistance = 40.2386818
+			var VerticalAngle = 0.518362343
+			var HorizontalAngle = 14.137167
+			var LookTarget = Real3{0, 0, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -125,7 +125,7 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{0.881357193, 0.34059, 2.66517639}
+			var Translation = Real3{0.881357193, 3.65096235, 2.66517639}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{-0.0737642199, 0, 0, 0.99727571}
 		}
@@ -206,7 +206,7 @@ Level
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Real3{0, -3.38279581, -4.07250214}
+			var Translation = Real3{0, 0.0884480476, -4.07250214}
 			var Scale = Real3{15.7767944, 1, 13.9628687}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -247,7 +247,7 @@ Level
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Real3{0, -0.149381638, -4.07250214}
+			var Translation = Real3{0, 3.32186222, -4.07250214}
 			var Scale = Real3{0.396481514, 0.396481514, 0.396481514}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -275,7 +275,7 @@ Level
 			var ArrowHead = true
 			var ArrowHeadSize = 0.25
 			var NormalScalar = 1
-			var Color = Real4{1, 1, 1, 1}
+			var Color = Real4{0.730000019, 0, 0, 1}
 		}
 		RigidBody 
 		{
@@ -327,7 +327,7 @@ Level
 					var ArrowHead = true
 					var ArrowHeadSize = 0.25
 					var NormalScalar = 1
-					var Color = Real4{1, 1, 1, 1}
+					var Color = Real4{0.730000019, 0, 0, 1}
 				}
 				Hierarchy 
 				{
@@ -365,7 +365,7 @@ Level
 							var ArrowHead = true
 							var ArrowHeadSize = 0.25
 							var NormalScalar = 1
-							var Color = Real4{1, 1, 1, 1}
+							var Color = Real4{0.730000019, 0, 0, 1}
 						}
 						Hierarchy 
 						{
@@ -403,7 +403,7 @@ Level
 									var ArrowHead = true
 									var ArrowHeadSize = 0.25
 									var NormalScalar = 1
-									var Color = Real4{1, 1, 1, 1}
+									var Color = Real4{0.730000019, 0, 0, 1}
 								}
 							}
 							Cog 
@@ -440,7 +440,7 @@ Level
 									var ArrowHead = true
 									var ArrowHeadSize = 0.25
 									var NormalScalar = 1
-									var Color = Real4{1, 1, 1, 1}
+									var Color = Real4{0.730000019, 0, 0, 1}
 								}
 							}
 						}
@@ -481,7 +481,7 @@ Level
 					var ArrowHead = true
 					var ArrowHeadSize = 0.25
 					var NormalScalar = 1
-					var Color = Real4{1, 1, 1, 1}
+					var Color = Real4{0.730000019, 0, 0, 1}
 				}
 				Hierarchy 
 				{
@@ -519,7 +519,7 @@ Level
 							var ArrowHead = true
 							var ArrowHeadSize = 0.25
 							var NormalScalar = 1
-							var Color = Real4{1, 1, 1, 1}
+							var Color = Real4{0.730000019, 0, 0, 1}
 						}
 						Hierarchy 
 						{
@@ -557,7 +557,7 @@ Level
 									var ArrowHead = true
 									var ArrowHeadSize = 0.25
 									var NormalScalar = 1
-									var Color = Real4{1, 1, 1, 1}
+									var Color = Real4{0.730000019, 0, 0, 1}
 								}
 							}
 						}
@@ -660,7 +660,7 @@ Level
 	{
 		var Name = "Renderer"
 		var LinkId = 3
-		DeferredRenderer 
+		DebugDeferredRenderer 
 		{
 			var DrawDebug = true
 			var GeometryDebug = GeometryValue.None
