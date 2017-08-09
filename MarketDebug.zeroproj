@@ -4,7 +4,7 @@ Cog
 	var Name = ""
 	ProjectSettings 
 	{
-		var ProjectName = "VOIDDebug"
+		var ProjectName = "MarketDebug"
 		var ProjectOwner = ""
 		var DefaultLevel = "Level"
 		var ProjectSpace = "Space"
