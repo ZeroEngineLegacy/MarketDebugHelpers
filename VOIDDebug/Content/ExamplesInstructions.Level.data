@@ -1,10 +1,9 @@
 [Version:1]
 Level 
 {
-	Cog 
+	Cog [ContextId:1]
 	{
 		var Name = "LevelSettings"
-		var LinkId = 1
 		GravityEffect 
 		{
 			var Active = true
@@ -40,36 +39,54 @@ Level
 			var FollowEditorCamera = false
 		}
 	}
-	Cog 
+	Cog [ContextId:2]
 	{
 		var Name = "Renderer"
-		var LinkId = 2
-		UIRenderer 
+		ForwardRenderer 
 		{
+			var EditorDebugDraw = true
+			var GameDebugDraw = true
+			var RenderDiffuse = true
+			var RenderSpecular = true
+			var RenderSkybox = false
+			var Skybox = "5822dec85e380cf1:SimpleSkybox"
 			var ClearColor = Real4{0, 0, 0, 0}
-			var DrawDebug = true
+			var DirectLighting = true
+			var IndirectLighting = true
+			var IndirectIntensity = 1
+			var ToneMap = true
+			var DirectionalLight = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var Cog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 		}
 	}
-	Cog 
+	Cog [ContextId:3]
 	{
 		var Name = "EditorCamera"
-		var LinkId = 3
 		Transform 
 		{
-			var Translation = Real3{-7.23276186, -0.00522792339, 2.9783895}
+			var Translation = Real3{-13.2438488, 12.5977163, 47.0793839}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.225689813, -0.0305996556, -0.00709262257, 0.973692715}
+			var Rotation = Quaternion{-0.143185392, -0.0647264197, -0.00938488636, 0.987532496}
 		}
 		CameraViewport 
 		{
 			var RenderInEditor = true
 			var RenderInGame = false
-			var RenderToViewport = true
-			var ForwardViewportEvents = false
 			var RenderOrder = 0
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -79,12 +96,12 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var Cog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -94,14 +111,18 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 2
+				var Cog = 2
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Real2{1920, 1080}
+			var ResolutionOrAspect = Integer2{1920, 1080}
+			var RenderToViewport = true
+			var ForwardViewportEvents = false
 			var ViewportScaling = ViewportScaling.Fill
 			var MarginColor = Real4{0, 0, 0, 1}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 		}
 		Camera 
 		{
@@ -114,20 +135,20 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 3.32871318
-			var VerticalAngle = 0.455530882
-			var HorizontalAngle = 0.0628320798
+			var Previous3DMode = ControlMode.Orbit
+			var LookDistance = 49.5303345
+			var VerticalAngle = 0.287979335
+			var HorizontalAngle = 0.130899921
 			var LookTarget = Real3{-7.04506302, -1.46965909, -0.00498822331}
 			var MoveSensitivity = 1
 		}
 	}
-	Cog 
+	Cog [ContextId:4]
 	{
 		var Name = "GameCamera"
-		var LinkId = 4
 		Transform 
 		{
-			var Translation = Real3{0, 2, 10}
+			var Translation = Real3{-4.57107258, 2, 10}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -135,12 +156,8 @@ Level
 		{
 			var RenderInEditor = false
 			var RenderInGame = true
-			var RenderToViewport = true
-			var ForwardViewportEvents = true
 			var RenderOrder = 0
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -150,12 +167,12 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4
+				var Cog = 4
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -165,14 +182,18 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 2
+				var Cog = 2
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Real2{1920, 1080}
+			var ResolutionOrAspect = Integer2{1920, 1080}
+			var RenderToViewport = true
+			var ForwardViewportEvents = true
 			var ViewportScaling = ViewportScaling.Letterbox
 			var MarginColor = Real4{0, 0, 0, 0}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 		}
 		Camera 
 		{
@@ -187,10 +208,9 @@ Level
 			var Active = true
 		}
 	}
-	Cog 
+	Cog [ContextId:5]
 	{
 		var Name = "Transform"
-		var LinkId = 5
 		Transform 
 		{
 			var Translation = Real3{-9.84584427, -0.639467001, -0.00498822145}
@@ -199,10 +219,9 @@ Level
 		}
 		Hierarchy 
 		{
-			Cog 
+			Cog [ContextId:6]
 			{
 				var Name = "SpriteText"
-				var LinkId = 6
 				Transform 
 				{
 					var Translation = Real3{0, -0.553461432, 0}
@@ -214,20 +233,23 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
-					var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "582c575af53d18c9:AlphaSprite"
 					var VertexColor = Real4{1, 1, 1, 1}
 					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Text = "[W, A, S, D] Move"
 					var Font = "57343753bb4eaaec:NotoSans-Regular"
 					var FontSize = 30
-					var Text = "[W, A, S, D] Move"
-					var Align = TextAlign.Left
 					var PixelsPerUnit = 64
+					var TextAlign = TextAlign.Center
 				}
 			}
-			Cog 
+			Cog [ContextId:7]
 			{
 				var Name = "SpriteText"
-				var LinkId = 7
 				Transform 
 				{
 					var Translation = Real3{0, -1.0347414, 0}
@@ -239,20 +261,23 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
-					var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "582c575af53d18c9:AlphaSprite"
 					var VertexColor = Real4{1, 1, 1, 1}
 					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Text = "[Right Mouse] Rotate"
 					var Font = "57343753bb4eaaec:NotoSans-Regular"
 					var FontSize = 30
-					var Text = "[Right Mouse] Rotate"
-					var Align = TextAlign.Left
 					var PixelsPerUnit = 64
+					var TextAlign = TextAlign.Center
 				}
 			}
-			Cog 
+			Cog [ContextId:8]
 			{
 				var Name = "SpriteText"
-				var LinkId = 8
 				Transform 
 				{
 					var Translation = Real3{0, -1.52208829, 0}
@@ -264,14 +289,18 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
-					var Material = "56dcc7b15f51207d:DefaultSpriteMaterial"
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "582c575af53d18c9:AlphaSprite"
 					var VertexColor = Real4{1, 1, 1, 1}
 					var GeometryMode = SpriteGeometryMode.ZPlane
+					var Text = "[Left Mouse] Move Object"
 					var Font = "57343753bb4eaaec:NotoSans-Regular"
 					var FontSize = 30
-					var Text = "[Left Mouse] Move Object"
-					var Align = TextAlign.Left
 					var PixelsPerUnit = 64
+					var TextAlign = TextAlign.Center
 				}
 			}
 		}

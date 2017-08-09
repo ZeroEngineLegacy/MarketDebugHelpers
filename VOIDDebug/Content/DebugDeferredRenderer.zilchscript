@@ -3,8 +3,8 @@ class DebugDeferredRenderer : ZilchComponent
 {
   [Property] var DrawDebug : Boolean = true;
   [Property] var GeometryDebug : GeometryValue = GeometryValue.None;
-  [Property] var ShowDiffuse : Boolean = true;
-  [Property] var ShowSpecular : Boolean = true;
+  [Property] var RenderDiffuse : Boolean = true;
+  [Property] var RenderSpecular : Boolean = true;
   
   [Property] var Skybox : Texture = Texture.SimpleSkybox;
   [Property] var DrawSkybox : Boolean = true;
@@ -20,7 +20,7 @@ class DebugDeferredRenderer : ZilchComponent
 
   function OnRenderTasksUpdate(event : RenderTasksEvent)
   {
-    var viewportSize = event.GetViewportSize();
+    var viewportSize = event.ViewportSize;
     var final = event.GetFinalTarget(viewportSize, TextureFormat.RGB8);
     
     // Geometry pass
@@ -34,10 +34,10 @@ class DebugDeferredRenderer : ZilchComponent
     geometryPassSettings.DepthTarget = depthStencil;
     
     geometryPassSettings.DepthSettings.DepthMode = DepthMode.Write;
-    geometryPassSettings.DepthSettings.DepthTest = DepthTest.LessEqual;
+    geometryPassSettings.DepthSettings.DepthCompareFunc = TextureCompareFunc.LessEqual;
     // Using stencil buffer to optimally identify which pixels had opaque objects rendered to them
     geometryPassSettings.DepthSettings.StencilMode = StencilMode.Enabled;
-    geometryPassSettings.DepthSettings.StencilTest = StencilTest.Always;
+    geometryPassSettings.DepthSettings.StencilCompareFunc = TextureCompareFunc.Always;
     geometryPassSettings.DepthSettings.StencilFailOp = StencilOp.Keep;
     geometryPassSettings.DepthSettings.DepthFailOp = StencilOp.Keep;
     geometryPassSettings.DepthSettings.DepthPassOp = StencilOp.Replace;
@@ -50,7 +50,7 @@ class DebugDeferredRenderer : ZilchComponent
     event.AddRenderTaskRenderPass(geometryPassSettings, RenderGroup.Opaque, GeometryPass());
     
     geometryPassSettings.CullMode = CullMode.Disabled;
-    event.AddRenderTaskRenderPass(geometryPassSettings, RenderGroup.AlphaCut, GeometryPass());
+    event.AddRenderTaskRenderPass(geometryPassSettings, RenderGroup.OpaqueDoubleSided, GeometryPass());
     
     // Lighting
     var lightBuffer = event.GetRenderTarget(viewportSize, TextureFormat.RGB16f);
@@ -62,7 +62,7 @@ class DebugDeferredRenderer : ZilchComponent
     
     // Only process background pixels
     lightSettings.DepthSettings.StencilMode = StencilMode.Enabled;
-    lightSettings.DepthSettings.StencilTest = StencilTest.Equal;
+    lightSettings.DepthSettings.StencilCompareFunc = TextureCompareFunc.Equal;
     lightSettings.DepthSettings.StencilFailOp = StencilOp.Keep;
     lightSettings.DepthSettings.DepthFailOp = StencilOp.Keep;
     lightSettings.DepthSettings.DepthPassOp = StencilOp.Keep;
@@ -122,8 +122,8 @@ class DebugDeferredRenderer : ZilchComponent
       imageBasedLighting.Intensity = this.IndirectIntensity;
       imageBasedLighting.GeometryBuffer0 = geometryBuffer0.Texture;
       imageBasedLighting.GeometryBuffer1 = geometryBuffer1.Texture;
-      imageBasedLighting.RenderDiffuse = this.ShowDiffuse;
-      imageBasedLighting.RenderSpecular = this.ShowSpecular;
+      imageBasedLighting.RenderDiffuse = this.RenderDiffuse;
+      imageBasedLighting.RenderSpecular = this.RenderSpecular;
     
       event.AddRenderTaskPostProcess(lightSettings, imageBasedLighting);
     }
@@ -143,24 +143,23 @@ class DebugDeferredRenderer : ZilchComponent
     
     if (this.DirectLighting)
     {
-      var geometryInputs = Graphics.ShaderInputs();
+      var geometryInputs = ShaderInputs();
       geometryInputs.Add("GeometryInput", "GeometryBuffer0", geometryBuffer0.Texture);
       geometryInputs.Add("GeometryInput", "GeometryBuffer1", geometryBuffer1.Texture);
+      
       lightSettings.GlobalShaderInputs = geometryInputs;
-      
       lightSettings.CullMode = CullMode.FrontFace;
-      
       lightSettings.BlendSettings.BlendMode = BlendMode.Enabled;
       lightSettings.BlendSettings.BlendEquation = BlendEquation.Add;
       lightSettings.BlendSettings.SourceFactor = BlendFactor.One;
       lightSettings.BlendSettings.DestFactor = BlendFactor.One;
-      
-      lightSettings.DepthSettings.DepthTest = DepthTest.GreaterEqual;
+      lightSettings.DepthSettings.DepthMode = DepthMode.Read;
+      lightSettings.DepthSettings.DepthCompareFunc = TextureCompareFunc.GreaterEqual;
       
       var lightPass = LightPass();
       lightPass.DitherTexture = Texture.BlueNoise;
-      lightPass.RenderDiffuse = this.ShowDiffuse;
-      lightPass.RenderSpecular = this.ShowSpecular;
+      lightPass.RenderDiffuse = this.RenderDiffuse;
+      lightPass.RenderSpecular = this.RenderSpecular;
       
       event.AddRenderTaskRenderPass(lightSettings, RenderGroup.Lights, lightPass);
     }
@@ -178,7 +177,7 @@ class DebugDeferredRenderer : ZilchComponent
     alphaSettings.BlendSettings.DestFactor = BlendFactor.One;
     
     alphaSettings.DepthSettings.DepthMode = DepthMode.Read;
-    alphaSettings.DepthSettings.DepthTest = DepthTest.LessEqual;
+    alphaSettings.DepthSettings.DepthCompareFunc = TextureCompareFunc.LessEqual;
     
     event.AddRenderTaskRenderPass(alphaSettings, RenderGroup.AdditiveBlend, ColorOutput());
 
@@ -236,11 +235,11 @@ class DebugDeferredRenderer : ZilchComponent
     debugSettings.BlendSettings.DestFactor = BlendFactor.InvSourceAlpha;
     
     debugSettings.DepthSettings.DepthMode = DepthMode.Read;
-    debugSettings.DepthSettings.DepthTest = DepthTest.LessEqual;
+    debugSettings.DepthSettings.DepthCompareFunc = TextureCompareFunc.LessEqual;
     
-    event.AddRenderTaskRenderPass(debugSettings, RenderGroup.DebugDraw, DefaultRenderPass());
+    event.AddRenderTaskRenderPass(debugSettings, RenderGroup.DebugDraw, ColorOutput());
     
     debugSettings.DepthSettings.DepthMode = DepthMode.Disabled;
-    event.AddRenderTaskRenderPass(debugSettings, RenderGroup.DebugDrawOnTop, DefaultRenderPass());
+    event.AddRenderTaskRenderPass(debugSettings, RenderGroup.DebugDrawOnTop, ColorOutput());
   }
 }
