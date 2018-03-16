@@ -671,7 +671,7 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Material = "5afaf7e17cf9ded2:SolidWireFrame"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		DirectionalLight 
@@ -690,8 +690,8 @@ Level
 		{
 			var DrawDebug = true
 			var GeometryDebug = GeometryValue.None
-			var ShowDiffuse = true
-			var ShowSpecular = true
+			var RenderDiffuse = true
+			var RenderSpecular = true
 			var Skybox = "5822dec85e380cf1:SimpleSkybox"
 			var DrawSkybox = true
 			var DirectLighting = true
